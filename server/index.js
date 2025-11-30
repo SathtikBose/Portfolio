@@ -2,15 +2,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config(); // Load env vars immediately
 
-const cors = require("cors");
 const multer = require("multer");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-const helmet = require("helmet");
-const mongoSanitize = require("express-mongo-sanitize");
-const xss = require("xss-clean");
-const rateLimit = require("express-rate-limit");
-const hpp = require("hpp");
 
 const connectDB = require("./config/db");
 const cloudinary = require("./config/cloudinary");
@@ -19,27 +13,6 @@ const Project = require("./models/Project");
 connectDB();
 
 const app = express();
-
-// Security Middleware
-app.use(helmet()); // Set security headers
-app.use(mongoSanitize()); // Prevent NoSQL injection
-app.use(xss()); // Prevent XSS attacks
-app.use(hpp()); // Prevent HTTP Parameter Pollution
-
-// Rate Limiting
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-});
-app.use(limiter);
-
-// CORS Config
-app.use(
-  cors({
-    origin: true, // Allow any origin
-    credentials: true,
-  })
-);
 
 app.use(express.json());
 app.use(cookieParser());
