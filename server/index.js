@@ -150,5 +150,10 @@ app.delete("/api/projects/:id", verifyToken, async (req, res) => {
     }
 })
 
+// Root route for health check
+app.get("/", (req, res) => {
+  res.send("Server running perfectly");
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

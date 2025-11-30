@@ -10,11 +10,12 @@ const Work = ({ isDark }) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/projects`
+        );
         setProjects(res.data);
       } catch (error) {
         console.error("Error fetching projects:", error);
-        // Fallback to static data if API fails or is empty initially
         setProjects(workData);
       }
     };
@@ -41,10 +42,16 @@ const Work = ({ isDark }) => {
       </p>
       <div className="my-10 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
         {mainProjects.map((project, index) => (
-          <a href={project.liveLink || project.link} target="_blank" key={index}>
+          <a
+            href={project.liveLink || project.link}
+            target="_blank"
+            key={index}
+          >
             <div
               className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
-              style={{ backgroundImage: `url(${project.image || project.bgImage})` }}
+              style={{
+                backgroundImage: `url(${project.image || project.bgImage})`,
+              }}
             >
               <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
                 <div className="">
@@ -77,10 +84,18 @@ const Work = ({ isDark }) => {
           >
             <div className="my-5 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
               {extraProjects.map((project, index) => (
-                <a href={project.liveLink || project.link} target="_blank" key={index + 4}>
+                <a
+                  href={project.liveLink || project.link}
+                  target="_blank"
+                  key={index + 4}
+                >
                   <div
                     className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group "
-                    style={{ backgroundImage: `url(${project.image || project.bgImage})` }}
+                    style={{
+                      backgroundImage: `url(${
+                        project.image || project.bgImage
+                      })`,
+                    }}
                   >
                     <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
                       <div className="">
@@ -92,7 +107,10 @@ const Work = ({ isDark }) => {
                         </p>
                       </div>
                       <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                        <a href={project.liveLink || project.link} target="_blank">
+                        <a
+                          href={project.liveLink || project.link}
+                          target="_blank"
+                        >
                           <img
                             src={assets.send_icon}
                             alt="send icon"
