@@ -3,8 +3,6 @@ const dotenv = require("dotenv");
 dotenv.config(); // Load env vars immediately
 
 const multer = require("multer");
-const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
 
 const connectDB = require("./config/db");
 const cloudinary = require("./config/cloudinary");
@@ -18,25 +16,10 @@ const cors = require("cors");
 app.use(cors({ origin: true, credentials: true }));
 
 app.use(express.json());
-app.use(cookieParser());
 
 // Multer setup for memory storage
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-
-// Middleware to verify token
-const verifyToken = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) return res.status(401).json({ message: "Not authenticated" });
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (error) {
-    res.status(403).json({ message: "Invalid token" });
-  }
-};
 
 // Admin Login
 app.post("/api/login", (req, res) => {
@@ -45,28 +28,10 @@ app.post("/api/login", (req, res) => {
     email === process.env.admin_email &&
     password === process.env.admin_password
   ) {
-    const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: "1d" });
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
-    });
     res.json({ success: true, message: "Login successful" });
   } else {
     res.status(401).json({ success: false, message: "Invalid credentials" });
   }
-});
-
-// Check Auth
-app.get("/api/check-auth", verifyToken, (req, res) => {
-  res.json({ success: true, user: req.user });
-});
-
-// Logout
-app.post("/api/logout", (req, res) => {
-  res.clearCookie("token");
-  res.json({ success: true, message: "Logged out" });
 });
 
 // Get all projects
@@ -79,8 +44,8 @@ app.get("/api/projects", async (req, res) => {
   }
 });
 
-// Add new project (Protected)
-app.post("/api/projects", verifyToken, upload.single("image"), async (req, res) => {
+// Add new project (Unprotected)
+app.post("/api/projects", upload.single("image"), async (req, res) => {
   try {
     const { title, description, liveLink } = req.body;
     
@@ -111,8 +76,8 @@ app.post("/api/projects", verifyToken, upload.single("image"), async (req, res) 
   }
 });
 
-// Delete project (Protected)
-app.delete("/api/projects/:id", verifyToken, async (req, res) => {
+// Delete project (Unprotected)
+app.delete("/api/projects/:id", async (req, res) => {
     try {
         const project = await Project.findById(req.params.id);
         if(!project) return res.status(404).json({message: "Project not found"});

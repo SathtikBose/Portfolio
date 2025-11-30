@@ -4,36 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AdminLogin = () => {
+const AdminLogin = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/check-auth`, {
-          withCredentials: true,
-        });
-        if (res.data.success) {
-          navigate('/admin/dashboard');
-        }
-      } catch (error) {
-        // Not authenticated, stay on login page
-      }
-    };
-    checkAuth();
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/login`,
-        { email, password },
-        { withCredentials: true }
+        { email, password }
       );
       if (res.data.success) {
+        setIsAuthenticated(true);
         toast.success('Login Successful');
         navigate('/admin/dashboard');
       }

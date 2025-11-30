@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   const [isDark, setIsdark] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     if (isDark) {
@@ -26,8 +27,8 @@ export default function App() {
   return (
     <>
       <Routes>
-        <Route path="/admin" element={<AdminLogin />} />
-        <Route element={<ProtectedRoute />}>
+        <Route path="/admin" element={<AdminLogin setIsAuthenticated={setIsAuthenticated} />} />
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Route>
         <Route
