@@ -36,7 +36,7 @@ app.use(limiter);
 // CORS Config
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: true, // Allow any origin
     credentials: true,
   })
 );
