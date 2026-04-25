@@ -11,7 +11,7 @@ const Work = ({ isDark }) => {
     const fetchProjects = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/projects`
+          `${import.meta.env.VITE_API_URL}/api/projects`,
         );
         setProjects(res.data);
       } catch (error) {
@@ -22,8 +22,8 @@ const Work = ({ isDark }) => {
     fetchProjects();
   }, []);
 
-  const mainProjects = projects.slice(0, 4);
-  const extraProjects = projects.slice(4);
+  const mainProjects = Array.isArray(projects) ? projects.slice(0, 4) : [];
+  const extraProjects = Array.isArray(projects) ? projects.slice(4) : [];
 
   return (
     <motion.div
@@ -37,40 +37,61 @@ const Work = ({ isDark }) => {
       <h4 className="text-center mb-2 text-lg font-ovo">My portfolio</h4>
       <h2 className="text-center text-5xl font-ovo">My latest work</h2>
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-outfit">
-        Welcome to my Fullstack web development portfolio ! Explore a collection
-        of projects showcasing ny expertise in Fullstack Web development.
+        Welcome to my Fullstack development portfolio ! Explore a collection of
+        projects showcasing ny expertise in Fullstack development.
       </p>
-      <div className="my-10 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+      <div className="my-10 flex flex-wrap gap-5 justify-center sm:justify-start">
         {mainProjects.map((project, index) => (
-          <a
-            href={project.liveLink || project.link}
-            target="_blank"
+          <div
             key={index}
+            className={`w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.33%-1.25rem)] xl:w-[calc(25%-1.25rem)] border border-gray-400 rounded-xl overflow-hidden flex flex-col group hover:-translate-y-1 duration-500 ${
+              isDark
+                ? "bg-[#2a004a] hover:shadow-[4px_4px_0_#000]"
+                : "bg-white hover:bg-[#fcf4ff] hover:shadow-[4px_4px_0_rgba(0,0,0,0.1)]"
+            }`}
           >
-            <div
-              className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
-              style={{
-                backgroundImage: `url(${project.image || project.bgImage})`,
-              }}
-            >
-              <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
-                <div className="">
-                  <h2 className="font-semibold text-black">{project.title}</h2>
-                  <p className="text-sm text-gray-700">{project.description}</p>
-                </div>
-                <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                  <a href={project.liveLink || project.link} target="_blank">
-                    <img
-                      src={assets.send_icon}
-                      alt="send icon"
-                      width={20}
-                      className="w-5"
-                    />
-                  </a>
-                </div>
+            {/* Image section - Landscape aspect */}
+            <div className="aspect-[16/10] overflow-hidden relative">
+              <img
+                src={project.image || project.bgImage}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute top-2 left-2">
+                <p className="text-[9px] uppercase tracking-wider bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-gray-700 font-bold">
+                  {project.projectType || "Website"}
+                </p>
               </div>
             </div>
-          </a>
+
+            {/* Content section - Compact */}
+            <div className="p-4 flex flex-col flex-grow">
+              <h3
+                className={`text-base font-semibold truncate ${isDark ? "text-white" : "text-black"}`}
+              >
+                {project.title}
+              </h3>
+              <p
+                className={`text-xs mt-1 line-clamp-2 h-8 ${isDark ? "text-gray-300" : "text-gray-600"}`}
+              >
+                {project.description}
+              </p>
+
+              <div className="mt-4 flex items-center justify-between">
+                <a
+                  href={project.liveLink || project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
+                >
+                  <button className="w-full py-2 bg-lime-300 text-black rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-lime-400 transition-colors duration-300 shadow-[2px_2px_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none">
+                    View Project
+                    <img src={assets.send_icon} alt="" className="w-3" />
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
       <AnimatePresence>
@@ -82,46 +103,56 @@ const Work = ({ isDark }) => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="my-5 grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
+            <div className="my-5 flex flex-wrap gap-5 justify-center sm:justify-start">
               {extraProjects.map((project, index) => (
-                <a
-                  href={project.liveLink || project.link}
-                  target="_blank"
+                <div
                   key={index + 4}
+                  className={`w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.33%-1.25rem)] xl:w-[calc(25%-1.25rem)] border border-gray-400 rounded-xl overflow-hidden flex flex-col group hover:-translate-y-1 duration-500 ${
+                    isDark
+                      ? "bg-[#2a004a] hover:shadow-[4px_4px_0_#000]"
+                      : "bg-white hover:bg-[#fcf4ff] hover:shadow-[4px_4px_0_rgba(0,0,0,0.1)]"
+                  }`}
                 >
-                  <div
-                    className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group "
-                    style={{
-                      backgroundImage: `url(${
-                        project.image || project.bgImage
-                      })`,
-                    }}
-                  >
-                    <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
-                      <div className="">
-                        <h2 className="font-semibold text-black">
-                          {project.title}
-                        </h2>
-                        <p className="text-sm text-gray-700">
-                          {project.description}
-                        </p>
-                      </div>
-                      <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
-                        <a
-                          href={project.liveLink || project.link}
-                          target="_blank"
-                        >
-                          <img
-                            src={assets.send_icon}
-                            alt="send icon"
-                            width={20}
-                            className="w-5"
-                          />
-                        </a>
-                      </div>
+                  <div className="aspect-[16/10] overflow-hidden relative">
+                    <img
+                      src={project.image || project.bgImage}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-2 left-2">
+                      <p className="text-[9px] uppercase tracking-wider bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-gray-700 font-bold">
+                        {project.projectType || "Website"}
+                      </p>
                     </div>
                   </div>
-                </a>
+
+                  <div className="p-4 flex flex-col flex-grow">
+                    <h3
+                      className={`text-base font-semibold truncate ${isDark ? "text-white" : "text-black"}`}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className={`text-xs mt-1 line-clamp-2 h-8 ${isDark ? "text-gray-300" : "text-gray-600"}`}
+                    >
+                      {project.description}
+                    </p>
+
+                    <div className="mt-4 flex items-center justify-between">
+                      <a
+                        href={project.liveLink || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full"
+                      >
+                        <button className="w-full py-2 bg-lime-300 text-black rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-lime-400 transition-colors duration-300 shadow-[2px_2px_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none">
+                          Demo
+                          <img src={assets.send_icon} alt="" className="w-3" />
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </motion.div>

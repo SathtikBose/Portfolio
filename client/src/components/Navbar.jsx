@@ -80,6 +80,11 @@ const Navbar = ({ isDark, setIsdark }) => {
             </a>
           </li>
           <li>
+            <a href="#certificates" className="font-ovo">
+              Certificates
+            </a>
+          </li>
+          <li>
             <a href="#contact" className="font-ovo">
               Contact me
             </a>
@@ -147,6 +152,11 @@ const Navbar = ({ isDark, setIsdark }) => {
           <li>
             <a href="#work" className="font-ovo" onClick={closeMenu}>
               My Work
+            </a>
+          </li>
+          <li>
+            <a href="#certificates" className="font-ovo" onClick={closeMenu}>
+              Certificates
             </a>
           </li>
           <li>

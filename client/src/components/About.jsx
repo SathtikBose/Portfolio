@@ -25,11 +25,12 @@ const About = ({ isDark }) => {
         </div>
         <div className="flex-1">
           <p className="mb-10 max-w-2xl font-outfit">
-            I'm a BCA student and aspiring Full Stack Developer passionate about
-            how websites work. Skilled in React and Node.js, I love building
-            projects, learning new tech, and sharing knowledge. My goal is to
-            grow into a senior developer and work with teams to build impactful
-            web applications.
+            I’m Sathtik Bose, a Full Stack Developer passionate about building
+            modern web and mobile applications. I’m a 2nd-year BCA student at
+            Netaji Subhash University, deeply interested in the "Why" and "How"
+            behind system design—from UI interactions to backend data flows. I
+            specialize in React, Node.js, and MongoDB, and I’m actively
+            expanding into AI, prompt engineering, and cloud technologies.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
             {infoList.map(({ icon, iconDark, title, description }, index) => (
@@ -74,13 +75,23 @@ const About = ({ isDark }) => {
             Tools I use
           </h4>
 
-          <ul className="flex items-center gap-3 sm:gap-5">
+          <ul className="flex flex-wrap items-center gap-3 sm:gap-5">
             {toolsData.map((tool, index) => (
               <li
                 key={index}
-                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500"
+                className={`flex items-center justify-center p-2 min-w-[3rem] sm:min-w-[3.5rem] aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500 group relative ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}`}
               >
-                <img src={tool} alt="tool" width={20} className="w-5 sm:w-7" />
+                {tool.icon ? (
+                  <img src={tool.icon} alt={tool.name} width={20} className="w-5 sm:w-7" />
+                ) : (
+                  <span className="text-[10px] font-bold text-center leading-tight">
+                    {tool.name}
+                  </span>
+                )}
+                {/* Tooltip */}
+                <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 rounded text-[10px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
+                  {tool.name}
+                </span>
               </li>
             ))}
           </ul>

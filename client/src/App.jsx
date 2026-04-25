@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Work from "./components/Work";
+import Certificates from "./components/Certificates";
 
 import { Routes, Route } from "react-router-dom";
 import AdminLogin from "./pages/AdminLogin";
@@ -40,6 +41,7 @@ export default function App() {
               <About isDark={isDark} />
               <Services isDark={isDark} />
               <Work isDark={isDark} />
+              <Certificates isDark={isDark} />
               <Contact isDark={isDark} />
               <Footer isDark={isDark} />
             </>

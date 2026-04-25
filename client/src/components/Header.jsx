@@ -32,12 +32,13 @@ const Header = ({ isDark }) => {
           width={24}
         />
       </h3>
-      <h1 className="text-3xl sm:text-6xl lg:text-[66px] fone-Ovo">
-        Fullstack web developer based in India.
+      <h1 className="text-3xl sm:text-6xl lg:text-[66px] font-ovo">
+        Software Developer based in Jamshedpur, India.
       </h1>
       <p className="max-w-2xl mx-auto font-outfit">
-        I am a fullstack web developer from Jharkhand . India with 1 year of
-        experience in multiple frontend and backend projects
+        I’m a Full Stack Developer focused on building modern web and mobile
+        applications. I work across frontend, backend, and database systems
+        using React, Node.js, and MongoDB.
       </p>
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
         <a

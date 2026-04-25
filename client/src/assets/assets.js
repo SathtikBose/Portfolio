@@ -35,6 +35,11 @@ import right_arrow from "./right-arrow.png";
 import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
 import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
+import antigravity from "./antigravity_icon.png";
+import claud from "./claude_icon.png";
+import github from "./github.png";
+import postman from "./postman_icon.png";
+import postgresql from "./postgressql_icon.png";
 
 export const assets = {
   user_image,
@@ -74,6 +79,11 @@ export const assets = {
   right_arrow_bold_dark,
   tailwindcss,
   bootstrap,
+  antigravity,
+  claud,
+  github,
+  postman,
+  postgresql,
 };
 
 export const workData = [];
@@ -83,29 +93,29 @@ export const serviceData = [
     icon: assets.code,
     title: "Full Stack Web Development",
     description:
-      "Build dynamic, interactive web apps using React, Node.js, and MongoDB—from frontend UI to backend logic.",
-    link: "https://en.wikipedia.org/wiki/Full_stack",
+      "Frontend architecture, backend APIs, and secure authentication systems using the MERN stack.",
+    link: "https://github.com/SathtikBose",
   },
   {
     icon: assets.globe,
-    title: "Responsive Web Design",
+    title: "Mobile App Development",
     description:
-      "Create fast, mobile-friendly, and accessible websites with modern design principles and clean code.",
-    link: "https://en.wikipedia.org/wiki/Responsive_web_design",
-  },
-  {
-    icon: assets.server,
-    title: "API & Backend Integration",
-    description:
-      "Develop RESTful APIs, manage databases, and implement secure authentication systems.",
-    link: "https://en.wikipedia.org/wiki/Back_end_development",
+      "Cross-platform mobile applications using React Native and the Expo ecosystem.",
+    link: "https://github.com/SathtikBose",
   },
   {
     icon: assets.rocket,
-    title: "Deployment & Hosting",
+    title: "AI Application Development",
     description:
-      "Deploy fully functional projects on platforms like Vercel or Netlify, with domain setup and optimization.",
-    link: "https://en.wikipedia.org/wiki/Software_deployment",
+      "Integrating Generative AI, prompt engineering, and LLMs into practical, scalable products.",
+    link: "https://github.com/SathtikBose",
+  },
+  {
+    icon: assets.server,
+    title: "SaaS Product Development",
+    description:
+      "Building scalable CRUD products with advanced dashboards and file upload systems.",
+    link: "https://github.com/SathtikBose",
   },
 ];
 
@@ -113,27 +123,33 @@ export const infoList = [
   {
     icon: assets.code_icon,
     iconDark: assets.code_icon_dark,
-    title: "Languages",
-    description: "HTML, CSS, JavaScript React Js, Next Js, Node.js ",
+    title: "Languages & Tech",
+    description:
+      "React, Node.js, MongoDB, React Native, Kotlin, Java, AI Agents",
   },
   {
     icon: assets.edu_icon,
     iconDark: assets.edu_icon_dark,
     title: "Education",
-    description: "Pursuing BCA (Bachelor of Computer Applications)",
+    description: "2nd Year BCA Student at Netaji Subhash University",
   },
   {
     icon: assets.project_icon,
     iconDark: assets.project_icon_dark,
-    title: "Projects",
-    description: "Built more than 5 projects on each topic",
+    title: "Experience",
+    description:
+      "Built multiple full-stack, mobile, and AI-integrated products",
   },
 ];
 
 export const toolsData = [
-  assets.vscode,
-  assets.bootstrap,
-  assets.mongodb,
-  assets.tailwindcss,
-  assets.git,
+  { name: "VS Code", icon: assets.vscode },
+  { name: "MongoDB", icon: assets.mongodb },
+  { name: "Tailwind", icon: assets.tailwindcss },
+  { name: "Git", icon: assets.git },
+  { name: "PostgreSQL", icon: assets.postgresql },
+  { name: "Postman", icon: assets.postman },
+  { name: "Claude", icon: assets.claud },
+  { name: "Antigravity", icon: assets.antigravity },
+  { name: "Github", icon: assets.github },
 ];

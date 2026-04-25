@@ -15,10 +15,9 @@ const Services = ({ isDark }) => {
       <h4 className="text-center mb-2 text-lg font-ovo">What I offer</h4>
       <h2 className="text-center text-5xl font-ovo">My Services</h2>
       <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-outfit">
-        I’m a passionate frontend developer and BCA student from Jamshedpur,
-        India, with hands-on experience in React and Node.js. I'm building
-        projects, growing my skills, and aiming to work with great teams on
-        impactful web applications.
+        I offer full-stack development across web, mobile, and AI-enabled
+        platforms. From frontend architecture to backend APIs and AI integrations,
+        I build practical, scalable products that deliver real-world value.
       </p>
       <div className="my-10 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
         {serviceData.map(({ icon, title, description, link }, index) => (
