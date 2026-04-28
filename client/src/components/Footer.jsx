@@ -14,11 +14,11 @@ const Footer = ({ isDark }) => {
       <div className="text-center">
         <img
           src={isDark ? assets.logo_dark : assets.logo}
-          className="w-36 mx-auto mb-2"
+          className="mx-auto mb-2 w-36"
           width={144}
           alt=""
         />
-        <div className=" w-max flex items-center gap-2 mx-auto">
+        <div className="flex items-center gap-2 mx-auto w-max">
           <img
             src={isDark ? assets.mail_icon_dark : assets.mail_icon}
             alt=""
@@ -30,7 +30,7 @@ const Footer = ({ isDark }) => {
       </div>
       <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6">
         <p>&copy; 2025 Sathtik Bose. All right reserved.</p>
-        <ul className="flex items-center gap-10 justify-center mt-4 sm:mt-0">
+        <ul className="flex items-center justify-center gap-10 mt-4 sm:mt-0">
           <li>
             <a target="_blank" href="https://github.com/SathtikBose">
               Github
@@ -42,8 +42,16 @@ const Footer = ({ isDark }) => {
             </a>
           </li>
           <li>
-            <a target="_blank" href="">
-              Twitter
+            <a
+              target="_blank"
+              href="https://www.coursera.org/user/8163beed191329b856da3634dacb82b9"
+            >
+              Coursera
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.udemy.com/user/sathtik-bose/">
+              Udemy
             </a>
           </li>
         </ul>

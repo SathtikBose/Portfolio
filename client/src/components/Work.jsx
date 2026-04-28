@@ -34,13 +34,13 @@ const Work = ({ isDark }) => {
       viewport={{ once: true, amount: 0.3 }}
       className={`w-full px-[12%] py-10 ${isDark ? "text-white" : ""}`}
     >
-      <h4 className="text-center mb-2 text-lg font-ovo">My portfolio</h4>
-      <h2 className="text-center text-5xl font-ovo">My latest work</h2>
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-outfit">
+      <h4 className="mb-2 text-lg text-center font-ovo">My portfolio</h4>
+      <h2 className="text-5xl text-center font-ovo">My latest work</h2>
+      <p className="max-w-2xl mx-auto mt-5 mb-12 text-center font-outfit">
         Welcome to my Fullstack development portfolio ! Explore a collection of
         projects showcasing ny expertise in Fullstack development.
       </p>
-      <div className="my-10 flex flex-wrap gap-5 justify-center sm:justify-start">
+      <div className="flex flex-wrap justify-center gap-5 my-10 sm:justify-start">
         {mainProjects.map((project, index) => (
           <div
             key={index}
@@ -55,7 +55,7 @@ const Work = ({ isDark }) => {
               <img
                 src={project.image || project.bgImage}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute top-2 left-2">
                 <p className="text-[9px] uppercase tracking-wider bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-gray-700 font-bold">
@@ -65,7 +65,7 @@ const Work = ({ isDark }) => {
             </div>
 
             {/* Content section - Compact */}
-            <div className="p-4 flex flex-col flex-grow">
+            <div className="flex flex-col flex-grow p-4">
               <h3
                 className={`text-base font-semibold truncate ${isDark ? "text-white" : "text-black"}`}
               >
@@ -77,7 +77,7 @@ const Work = ({ isDark }) => {
                 {project.description}
               </p>
 
-              <div className="mt-4 flex items-center justify-between">
+              <div className="flex items-center justify-between mt-4">
                 <a
                   href={project.liveLink || project.link}
                   target="_blank"
@@ -103,7 +103,7 @@ const Work = ({ isDark }) => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="my-5 flex flex-wrap gap-5 justify-center sm:justify-start">
+            <div className="flex flex-wrap justify-center gap-5 my-5 sm:justify-start">
               {extraProjects.map((project, index) => (
                 <div
                   key={index + 4}
@@ -117,7 +117,7 @@ const Work = ({ isDark }) => {
                     <img
                       src={project.image || project.bgImage}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-2 left-2">
                       <p className="text-[9px] uppercase tracking-wider bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded text-gray-700 font-bold">
@@ -126,7 +126,7 @@ const Work = ({ isDark }) => {
                     </div>
                   </div>
 
-                  <div className="p-4 flex flex-col flex-grow">
+                  <div className="flex flex-col flex-grow p-4">
                     <h3
                       className={`text-base font-semibold truncate ${isDark ? "text-white" : "text-black"}`}
                     >
@@ -138,7 +138,7 @@ const Work = ({ isDark }) => {
                       {project.description}
                     </p>
 
-                    <div className="mt-4 flex items-center justify-between">
+                    <div className="flex items-center justify-between mt-4">
                       <a
                         href={project.liveLink || project.link}
                         target="_blank"
