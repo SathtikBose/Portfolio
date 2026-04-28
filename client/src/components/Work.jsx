@@ -146,7 +146,7 @@ const Work = ({ isDark }) => {
                         className="w-full"
                       >
                         <button className="w-full py-2 bg-lime-300 text-black rounded-lg text-xs font-bold flex items-center justify-center gap-2 hover:bg-lime-400 transition-colors duration-300 shadow-[2px_2px_0_#000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none">
-                          Demo
+                          View Project
                           <img src={assets.send_icon} alt="" className="w-3" />
                         </button>
                       </a>
