@@ -12,6 +12,7 @@ import { Routes, Route } from "react-router-dom";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   const [isDark, setIsdark] = useState(true);
@@ -47,6 +48,7 @@ export default function App() {
             </>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
